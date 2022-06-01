@@ -11,23 +11,25 @@ syn region nbHeaderYAML matchgroup=nbYAML start=+---+ end=+---+ contains=@yaml
 hi def link nbYAML Type
 
 " wiki style links
-syn region nbLink matchgroup=nbBrackets start=/\[\[/ end=/\]\]/ display oneline
-hi link nbLink      htmlBoldUnderline
+" [[link]]
+syn region  nbLink matchgroup=nbBrackets start=/\[\[/ end=/\]\]/ display oneline contains=nbLink
+hi def link nbBrackets  Ignore
+hi def link nbLink      htmlBoldUnderline
 
 " task items
 syn match nbTaskMarker  "\v(\[)([ /x])(\])" contains=@nbTaskStatus
 syn match nbTaskEmpty   "\v(\[)\zs([ ])\ze(\])"
 syn match nbTaskInProg  "\v(\[)\zs([/])\ze(\])"
 syn match nbTaskDone    "\v(\[)\zs([x])\ze(\])"
-syn cluster nbTaskStatus contains=nbTaskEmpty,nbTaskInProg,nbTaskDone
-hi link nbTaskInProg    Yellow
-hi link nbTaskDone      Green
-hi link nbTask          Comment
+syn cluster nbTaskStatus    contains=nbTaskEmpty,nbTaskInProg,nbTaskDone
+hi def link nbTaskInProg    Yellow
+hi def link nbTaskDone      Green
+hi def link nbTaskMarker    Ignore
 
 " FIXME collides with header1 unless there is a string before it
 syn match nbTag     "\%(#\)\@<=[^\u000a\u0020\\#\(\)\{\}\[\]]\+"
-hi link nbTag       BlueItalic
 syn match nbTagCmd  "\v(#)\ze([^\u000a\u0020\\#\(\)\{\}\[\]]+)"
+hi link nbTag       BlueItalic
 hi link nbTagCmd    Comment
 
 " keys used in nosql database
@@ -44,8 +46,6 @@ hi link markdownH3  Blue
 hi link markdownH4  Purple
 hi link markdownH5  Red
 hi link markdownH6  Orange
-
-" [ ] [/] [x]
 
 let b:current_syntax = 'notebase'
 
