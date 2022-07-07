@@ -12,7 +12,7 @@ hi def link nbYAML Type
 
 " wiki style links
 " [[link]]
-syn region  nbLink matchgroup=nbBrackets start=/\[\[/ end=/\]\]/ display oneline contains=nbLink
+syn region  nbLink matchgroup=nbBrackets start=/\[\[/ end=/\]\]/ display oneline contains=nbLink concealends
 hi def link nbBrackets  Ignore
 hi def link nbLink      htmlBoldUnderline
 
@@ -46,6 +46,8 @@ hi link markdownH3  Blue
 hi link markdownH4  Purple
 hi link markdownH5  Red
 hi link markdownH6  Orange
+
+setlocal cole=2
 
 let b:current_syntax = 'notebase'
 
