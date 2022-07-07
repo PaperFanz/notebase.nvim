@@ -46,6 +46,7 @@ hi link markdownH3  Blue
 hi link markdownH4  Purple
 hi link markdownH5  Red
 hi link markdownH6  Orange
+hi link markdownHeadingDelimiter Ignore
 
 let b:current_syntax = 'notebase'
 
