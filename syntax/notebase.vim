@@ -30,7 +30,7 @@ syn region nbBold matchgroup=nbIgnore start="\%(\*\*\|__\)" end="\%(\*\*\|__\)" 
 hi def link nbBold markdownBold
 syn region nbBoldItalic matchgroup=nbIgnore start="\%(\*\*\*\|___\)" end="\%(\*\*\*\|___\)" contains=nbBoldItalic concealends oneline
 hi def link nbBoldItalic htmlBoldItalic
-syn region nbInlineCode matchgroup=nbIgnore start="\%(\`\)" end="\%(\`\)" contains=nbInlineCode concealends oneline
+syn region nbInlineCode matchgroup=nbIgnore start="\v(\`)\ze([^`])" end="\v(\`)" contains=nbInlineCode concealends oneline
 hi def link nbInlineCode Blue
 
 hi def link nbIgnore Ignore
@@ -50,7 +50,7 @@ hi def link nbTaskInProg    Yellow
 hi def link nbTaskDone      Green
 hi def link nbTaskMarker    Ignore
 
-" FIXME collides with header1 unless there is a string before it
+" tags used to identify files
 syn match nbTag     "\%(#\)\@<=[^\u000a\u0020\\#\(\)\{\}\[\]]\+"
 syn match nbTagCmd  "\v(#)\ze([^\u000a\u0020\\#\(\)\{\}\[\]]+)"
 hi link nbTag       BlueItalic
