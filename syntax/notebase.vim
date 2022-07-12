@@ -2,7 +2,7 @@ if exists("b:current_syntax")
   finish
 endif
 
-runtime! syntax/markdown.vim
+" runtime! syntax/markdown.vim
 unlet! b:current_syntax
 
 " allows for highlighted yaml header
@@ -10,10 +10,34 @@ syn include @yaml syntax/yaml.vim
 syn region nbHeaderYAML matchgroup=nbYAML start=+---+ end=+---+ contains=@yaml
 hi def link nbYAML Type
 
+" markdown headings and formatting
+syn region nbH1 matchgroup=nbIgnore start="^\s*#" end="$" contains=nbH1 oneline
+hi def link nbH1 markdownH1
+syn region nbH2 matchgroup=nbIgnore start="^\s*##" end="$" contains=nbH2 oneline
+hi def link nbH2 markdownH2
+syn region nbH3 matchgroup=nbIgnore start="^\s*###" end="$" contains=nbH3 oneline
+hi def link nbH3 markdownH3
+syn region nbH4 matchgroup=nbIgnore start="^\s*####" end="$" contains=nbH4 oneline
+hi def link nbH4 markdownH4
+syn region nbH5 matchgroup=nbIgnore start="^\s*#####" end="$" contains=nbH5 oneline
+hi def link nbH5 markdownH5
+syn region nbH6 matchgroup=nbIgnore start="^\s*######" end="$" contains=nbH6 oneline
+hi def link nbH6 markdownH6
+
+syn region nbItalic matchgroup=nbIgnore start="\%(\*\|_\)" end="\%(\*\|_\)" contains=nbItalic concealends oneline
+hi def link nbItalic markdownItalic
+syn region nbBold matchgroup=nbIgnore start="\%(\*\*\|__\)" end="\%(\*\*\|__\)" contains=nbBold concealends oneline
+hi def link nbBold markdownBold
+syn region nbBoldItalic matchgroup=nbIgnore start="\%(\*\*\*\|___\)" end="\%(\*\*\*\|___\)" contains=nbBoldItalic concealends oneline
+hi def link nbBoldItalic htmlBoldItalic
+syn region nbInlineCode matchgroup=nbIgnore start="\%(\`\)" end="\%(\`\)" contains=nbInlineCode concealends oneline
+hi def link nbInlineCode Blue
+
+hi def link nbIgnore Ignore
+
 " wiki style links
 " [[link]]
-syn region  nbLink matchgroup=nbBrackets start=/\[\[/ end=/\]\]/ display oneline contains=nbLink concealends
-hi def link nbBrackets  Ignore
+syn region  nbLink matchgroup=nbIgnore start=/\[\[/ end=/\]\]/ display oneline contains=nbLink concealends
 hi def link nbLink      htmlBoldUnderline
 
 " task items
