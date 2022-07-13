@@ -35,6 +35,20 @@ hi def link nbInlineCode Blue
 
 hi def link nbIgnore Ignore
 
+" nested lists
+syn region nbList1 matchgroup=nbList1 start="\v^(\w+\.|-) " end="\v\ze(\S|$)" oneline
+hi def link nbList1 Green
+syn region nbList2 matchgroup=nbList2 start="\v^(    |\t)(\w+\.|-) " end="\v\ze(\S|$)" oneline
+hi def link nbList2 Aqua
+syn region nbList3 matchgroup=nbList3 start="\v^(        |\t\t)(\w+\.|-) " end="\v\ze(\S|$)" oneline
+hi def link nbList3 Blue
+syn region nbList4 matchgroup=nbList4 start="\v^(            |\t\t\t)(\w+\.|-) " end="\v\ze(\S|$)" oneline
+hi def link nbList4 Purple
+syn region nbList5 matchgroup=nbList5 start="\v^(                |\t\t\t\t)(\w+\.|-) " end="\v\ze(\S|$)" oneline
+hi def link nbList5 Red
+syn region nbList6 matchgroup=nbList6 start="\v^(                    |\t\t\t\t\t)(\w+\.|-) " end="\v\ze(\S|$)" oneline
+hi def link nbList6 Orange
+
 " wiki style links
 " [[link]]
 syn region  nbLink matchgroup=nbIgnore start=/\[\[/ end=/\]\]/ display oneline contains=nbLink concealends
