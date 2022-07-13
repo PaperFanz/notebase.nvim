@@ -11,18 +11,18 @@ syn region nbHeaderYAML matchgroup=nbYAML start=+---+ end=+---+ contains=@yaml
 hi def link nbYAML Type
 
 " markdown headings and formatting
-syn region nbH1 matchgroup=nbIgnore start="^\s*#" end="$" contains=nbH1 oneline
-hi def link nbH1 markdownH1
-syn region nbH2 matchgroup=nbIgnore start="^\s*##" end="$" contains=nbH2 oneline
-hi def link nbH2 markdownH2
-syn region nbH3 matchgroup=nbIgnore start="^\s*###" end="$" contains=nbH3 oneline
-hi def link nbH3 markdownH3
-syn region nbH4 matchgroup=nbIgnore start="^\s*####" end="$" contains=nbH4 oneline
-hi def link nbH4 markdownH4
-syn region nbH5 matchgroup=nbIgnore start="^\s*#####" end="$" contains=nbH5 oneline
-hi def link nbH5 markdownH5
-syn region nbH6 matchgroup=nbIgnore start="^\s*######" end="$" contains=nbH6 oneline
-hi def link nbH6 markdownH6
+syn region nbH1 matchgroup=nbIgnore start="^\s*# " end="$" contains=nbH1 oneline
+hi def link nbH1 Green
+syn region nbH2 matchgroup=nbIgnore start="^\s*## " end="$" contains=nbH2 oneline
+hi def link nbH2 Aqua
+syn region nbH3 matchgroup=nbIgnore start="^\s*### " end="$" contains=nbH3 oneline
+hi def link nbH3 Blue
+syn region nbH4 matchgroup=nbIgnore start="^\s*#### " end="$" contains=nbH4 oneline
+hi def link nbH4 Purple
+syn region nbH5 matchgroup=nbIgnore start="^\s*##### " end="$" contains=nbH5 oneline
+hi def link nbH5 Red
+syn region nbH6 matchgroup=nbIgnore start="^\s*###### " end="$" contains=nbH6 oneline
+hi def link nbH6 Orange
 
 syn region nbItalic matchgroup=nbIgnore start="\%(\*\|_\)" end="\%(\*\|_\)" contains=nbItalic concealends oneline
 hi def link nbItalic markdownItalic
@@ -51,26 +51,12 @@ hi def link nbTaskDone      Green
 hi def link nbTaskMarker    Ignore
 
 " tags used to identify files
-syn match nbTag     "\%(#\)\@<=[^\u000a\u0020\\#\(\)\{\}\[\]]\+"
-syn match nbTagCmd  "\v(#)\ze([^\u000a\u0020\\#\(\)\{\}\[\]]+)"
-hi link nbTag       BlueItalic
-hi link nbTagCmd    Comment
-
+syn region nbTag matchgroup=nbCmd start="\v(#)\ze(\a+)" end="\v(\_s)" display contains=nbTag
+hi link nbTag BlueItalic
 " keys used in nosql database
-syn match nbKey     "\%(\\\)\@<=[^\u000a\u0020\\#\(\)\{\}\[\]]\+" 
-hi link nbKey       GreenItalic
-syn match nbKeyCmd  "\v(\\)\ze([^\u000a\u0020\\#\(\)\{\}\[\]]+)"
-hi link nbKeyCmd    Comment
-
-" FIXME manually set h1...h6 syntax highlighting (syntax/html.vim links all to
-" Title)
-hi link markdownH1  Green
-hi link markdownH2  Aqua
-hi link markdownH3  Blue
-hi link markdownH4  Purple
-hi link markdownH5  Red
-hi link markdownH6  Orange
-hi link markdownHeadingDelimiter Ignore
+syn region nbKey matchgroup=nbCmd start="\v(\\)\ze(\S+)" end="\v(\_s)" display contains=nbKey
+hi link nbKey PurpleItalic
+hi link nbCmd Comment
 
 setlocal cole=2
 
