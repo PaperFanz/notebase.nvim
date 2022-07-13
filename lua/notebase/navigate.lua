@@ -1,7 +1,7 @@
-local my_cool_module = {}
+local navigate = {}
 
-function my_cool_module.greeting(name)
+function navigate.greeting(name)
    return "Hello " .. name
 end
 
-return my_cool_module
+return navigate

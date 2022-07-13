@@ -105,8 +105,6 @@ syn region nbCshBlock matchgroup=nbCodeBlock start="\v^```([cC][sS][hH])$" end="
 syn region nbCodeBlock matchgroup=nbCodeBlock start="\v^```$" end="\v^```$" keepend
 hi def link nbCodeBlock Blue
 
-setlocal cole=2
-
 let b:current_syntax = 'notebase'
 
 " vim:set sw=2:

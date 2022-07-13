@@ -7,5 +7,6 @@ if exists("b:did_ftplugin")
   finish
 endif
 
-runtime! ftplugin/markdown.vim
+setlocal cole=2
+setlocal wrap
 
