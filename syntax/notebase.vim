@@ -5,11 +5,6 @@ endif
 " runtime! syntax/markdown.vim
 unlet! b:current_syntax
 
-" allows for highlighted yaml header
-syn include @yaml syntax/yaml.vim
-syn region nbHeaderYAML matchgroup=nbYAML start=+---+ end=+---+ contains=@yaml
-hi def link nbYAML Type
-
 " markdown headings and formatting
 syn region nbH1 matchgroup=nbIgnore start="^\s*# " end="$" contains=nbH1 oneline
 hi def link nbH1 Green
@@ -71,6 +66,44 @@ hi link nbTag BlueItalic
 syn region nbKey matchgroup=nbCmd start="\v(\\)\ze(\S+)" end="\v(\_s)" display contains=nbKey
 hi link nbKey PurpleItalic
 hi link nbCmd Comment
+
+" allows for highlighted yaml header
+unlet! b:current_syntax
+syn include @yaml syntax/yaml.vim
+syn region nbHeaderYAML matchgroup=nbYAML start=+---+ end=+---+ contains=@yaml
+hi def link nbYAML Type
+
+" syntax highlighted code blocks
+unlet! b:current_syntax
+syn include @C syntax/c.vim
+syn region nbCBlock matchgroup=nbCodeBlock start="\v^```([cC])$" end="\v^```$" contains=@C keepend
+
+unlet! b:current_syntax
+syn include @Cpp syntax/cpp.vim
+syn region nbCppBlock matchgroup=nbCodeBlock start="\v^```([cC][pP][pP])$" end="\v^```$" contains=@Cpp keepend
+
+unlet! b:current_syntax
+syn include @Python syntax/python.vim
+syn region nbPythonBlock matchgroup=nbCodeBlock start="\v^```([pP][yY][tT][hH][oO][nN])$" end="\v^```$" contains=@Python keepend
+
+unlet! b:current_syntax
+syn include @Git syntax/git.vim
+syn region nbGitBlock matchgroup=nbCodeBlock start="\v^```([gG][iI][tT])$" end="\v^```$" contains=@Git keepend
+
+unlet! b:current_syntax
+syn include @Verilog syntax/verilog.vim
+syn region nbVerilogBlock matchgroup=nbCodeBlock start="\v^```([vV][eE][rR][iI][lL][oO][gG])$" end="\v^```$" contains=@Verilog keepend
+
+unlet! b:current_syntax
+syn include @sh syntax/sh.vim
+syn region nbshBlock matchgroup=nbCodeBlock start="\v^```([sS][hH])$" end="\v^```$" contains=@sh keepend
+
+unlet! b:current_syntax
+syn include @Csh syntax/csh.vim
+syn region nbCshBlock matchgroup=nbCodeBlock start="\v^```([cC][sS][hH])$" end="\v^```$" contains=@Csh keepend
+
+syn region nbCodeBlock matchgroup=nbCodeBlock start="\v^```$" end="\v^```$" keepend
+hi def link nbCodeBlock Blue
 
 setlocal cole=2
 

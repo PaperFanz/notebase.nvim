@@ -61,7 +61,28 @@ obj:
 **bold**
 ***bold italic***
 `inline code`
+
 ```c
-// block code
+#include <stdio.h>
+int main (void) {
+    printf("Hello World!\n");
+    return 0;
+}
+```
+
+```Python
+import numpy
+
+for i in range(0,9):
+    print(i)
+# done
+```
+
+```csh
+alias today "date '+%d%h%y'"
+```
+
+```
+some generic code block
 ```
 
