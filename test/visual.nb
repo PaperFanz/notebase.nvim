@@ -56,7 +56,6 @@ obj:
 
 # Formatting Test
 
-a super duper very very very very very very very very very very very very very very very long line
 [[Wiki-style link]]
 *italic*
 **bold**
